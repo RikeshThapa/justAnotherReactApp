@@ -1,8 +1,7 @@
-from React import 'react';
-
+import React from 'react';
 
 import PlaceItem from './PlaceItem';
-import Card from '../../shared/UIElements/Card';
+import Card from '../../shared/components/UIElements/Card';
 
 import './PlaceList.css';
 
@@ -28,7 +27,7 @@ const PlaceList = props => {
                 description={place.description}
                 address={place.address} 
                 creatorId={place.creator}
-                coordinates={place.location}
+                coordinates={place.coordinates}
                 />
         )}
     </ul>
