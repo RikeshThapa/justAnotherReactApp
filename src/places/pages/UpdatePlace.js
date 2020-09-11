@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
+import Card from '../../shared/components/UIElements/Card';
 import { VALIDATOR_REQUIRE,
          VALIDATOR_MINLENGTH } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
@@ -23,12 +24,12 @@ const DUMMY_PLACES = [
         },
     },
     {
-        id: 'p1', 
+        id: 'p2', 
         imageURL: 'https://image.shutterstock.com/image-photo/nice-evening-after-sunset-600w-538099591.jpg',
-        title: 'place 1',
+        title: 'place 2',
         description: 'place description',
         address: 'Lifestyle Group, Indianapolis, USA',
-        creatorId: 'u2',
+        creatorId: 'u1',
         coordinates: {
             lat: 39.731,
             lng: -86.056
@@ -57,19 +58,21 @@ const UpdatePlace = props => {
     const identifiedPlace = DUMMY_PLACES.find(p => p.id === placeId);
 
     useEffect(() => {
-        setFormData(
-            {
-                title: {
-                    value: identifiedPlace.title,
-                    isValid: true
+        if(identifiedPlace){
+            setFormData(
+                {
+                    title: {
+                        value: identifiedPlace.title,
+                        isValid: true
+                    },
+                    description: {
+                        value: identifiedPlace.description,
+                        isValid: true
+                    }
                 },
-                description: {
-                    value: identifiedPlace.description,
-                    isValid: true
-                }
-            },
-            true
-        );
+                true
+            );
+        }
         setIsLoading(false);
     }, [setFormData, identifiedPlace]);
 
@@ -81,17 +84,17 @@ const UpdatePlace = props => {
 
     if (!identifiedPlace) {
         return (
-            <div className="center">
+            <Card className="center">
                 <h2>Could not find place</h2>
-            </div>
+            </Card>
         );
     }
 
     if (isLoading) {
         return (
-            <div className="center">
+            <Card className="center">
                 <h2>Loading...</h2>
-            </div>
+            </Card>
         )
     }
 

@@ -17,12 +17,12 @@ const DUMMY_PLACES = [
         },
     },
     {
-        id: 'p1', 
+        id: 'p2', 
         imageURL: 'https://image.shutterstock.com/image-photo/nice-evening-after-sunset-600w-538099591.jpg',
-        title: 'place 1',
+        title: 'place 2',
         description: 'place description',
         address: 'Lifestyle Group, Indianapolis, USA',
-        creatorId: 'u2',
+        creatorId: 'u1',
         coordinates: {
             lat: 39.731,
             lng: -86.056
