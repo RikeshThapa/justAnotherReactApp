@@ -6,10 +6,13 @@ import NewPlace from './places/pages/NewPlace';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import UserPlaces from './places/pages/UserPlaces'; 
 import UpdatePlace from './places/pages/UpdatePlace';
+import { useForm } from './shared/hooks/form-hook';
 import Auth from './user/pages/Auth';
 import { AuthContext } from './shared/context/auth-context';
 
+
 const App = () => {
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const login = useCallback(() => {
@@ -22,7 +25,7 @@ const App = () => {
 
   let routes;
 
-  if (isLoggedIn) {
+  if (!isLoggedIn) {
     routes = (
       <Switch>
         <Route path="/" exact>
@@ -31,7 +34,9 @@ const App = () => {
         <Route path="/:userId/places" exact>
           <UserPlaces />
         </Route>
-        
+        <Route path="/auth" exact>
+          <Auth />
+        </Route>        
         <Redirect to="/auth" />      
       </Switch>
     );
